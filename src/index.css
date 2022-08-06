@@ -1,0 +1,79 @@
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:ital,wght@1,500&display=swap');
+@import url('./App.css');
+
+* {
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.509);
+}
+
+
+main {
+  background-color: rgba(33, 30, 35, 0.064);
+}
+
+.hero {
+  margin: 20px;
+  height: 700px; 
+  width: 1200px;
+  /* border: 1px solid white; */
+  background-image: url('');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  box-shadow: 20px 10px 5px rgba(128, 128, 128, 0.46);
+}
+
+header {
+  height: 10vh;
+}
+
+footer {
+  height: 10vh;
+}
+
+
+.prose img {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px; 
+}
+
+.home-name {
+  font-size: 150px; 
+}
+
+.content-boxes {
+  display: flex; 
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    flex-flow: column wrap;
+  }
+}
+
+#info-box-picture {
+  font-size: 200px;
+  position: relative;
+  top: -120px;
+}
+
+.info-box {
+  margin: 10px;
+  display: block;
+  text-align: center;
+  background-color: white;
+  height: 40rem;
+  width: 64rem;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px black;  
+}
+
+.info-box.small {
+  width: 16rem;
+  height: 16rem;
+}
