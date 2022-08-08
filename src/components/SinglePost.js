@@ -56,9 +56,14 @@ export default function SinglePost() {
                         </div>
                     </header>
                 </div>
+                <div  className="h-800 grid md:grid-cols-2 lg:grid-cols-3 p-12 overflow-x-scroll">
                 {singlePost && singlePost.mainImage.map((item, i) => (
-              <img key={i} src={urlFor(item)} />
+                    <div className="mr-12">
+                    <img className="block rounded" key={i} src={urlFor(item).width(500)} />
+                    </div>
                 ))}
+                </div>
+                
                 <div className="px-16 lg:px-48 py-12 lg:py-20 prose lg:prose-xl max-w-full">
                     <BlockContent
                     blocks={singlePost.body}

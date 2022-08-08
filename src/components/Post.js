@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import {client} from "../Client.js"
-import { urlFor } from "../Client";
+import {client, urlFor} from "../Client.js"
+import { Tile, Button  } from "@carbon/ibm-security";
 
 
 export default function Post() {
@@ -13,6 +13,7 @@ export default function Post() {
                     title,
                     slug,
                     mainImage,
+                    description,
                 }`
             )
             .then((data) => setPost(data))
@@ -30,22 +31,21 @@ export default function Post() {
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 p-12">
                         {postData && postData.map((post, index) => (
-                        <article className="mr-10">
+                        <Tile className="mr-10" >
                             <Link to={"/post/" + post.slug.current} key={post.slug.current}>
-                                <span className="block h-64 realtive rounded shadow leading-snug bg-white border-l-8 border-green-400 -z-1" key={index}>
-                                    <img 
-                                        src={urlFor(post.mainImage && post.mainImage[0])} 
-                                        width={250} 
-                                        height={250}
-                                        alt={post.mainImage[0].alt}
-                                        className="w-full h-full rounded-r object-cover"
-                                    />
-                                    <span className="relative flex justify-end items-end pr-4 pb-4">
-                                        <h3 className="text-sm text-gray-800 px-3 py-4 bg-red-700 text-red-100 bg-opacity-75 rounded">{post.title}</h3>
-                                    </span>
-                                </span>
+                                <div className="block h-96 realtive rounded shadow leading-snug -z-1 flex items-end justify-end" 
+                                    key={index}
+                                    style={{
+                                        backgroundImage: `url(` + urlFor(post.mainImage && post.mainImage[0]) + `)`,
+                                        height: '400px'
+                                    }}>
+                                    <Button className="pr-6 pb-6 w-fit">
+                                        <h3 className="text-md text-white-900">{post.title}</h3>
+                                        <p className="text-sm text-white-800">{post.description}</p>
+                                    </Button>
+                                </div>
                             </Link>
-                        </article>
+                        </Tile>
                         ))}
                     </div>
                 </section>
