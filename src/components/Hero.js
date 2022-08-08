@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import sanityClient from "../Client.js"
+import {client} from "../Client.js"
 import createImageUrlBuilder from "@sanity/image-url";
 import BlockContent from "@sanity/block-content-to-react"
 
 import { Button, Tile } from 'carbon-components-react'
 
 
-const builder = createImageUrlBuilder(sanityClient);
+const builder = createImageUrlBuilder(client);
 
 function urlFor(source) {
     return builder.image(source)
@@ -18,7 +18,7 @@ export default function Hero() {
         const [heroData, setHero] = useState(null);
 
         useEffect(() => {
-            sanityClient
+            client
                 .fetch(`*[_type == "hero"]{
                 title,
                    mainImage{

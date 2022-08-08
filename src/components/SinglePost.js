@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import sanityClient from "../Client"
+import {client} from "../Client"
 import createImageUrlBuilder from "@sanity/image-url";
 import BlockContent from "@sanity/block-content-to-react"
 
 
-const builder = createImageUrlBuilder(sanityClient);
+const builder = createImageUrlBuilder(client);
 
 function urlFor(source) {
     return builder.image(source)
@@ -17,17 +17,12 @@ export default function SinglePost() {
     const { slug } = useParams();
 
     useEffect(() => {
-        sanityClient
+        client
             .fetch(`*[slug.current == "${slug}"]{
             title,
             _id,
             slug,
-            mainImage{
-                asset->{
-                    _id,
-                    url
-                }
-            },
+            mainImage,
             body,
             "name": author->name,
             "authorImage": author->image
@@ -61,6 +56,9 @@ export default function SinglePost() {
                         </div>
                     </header>
                 </div>
+                {singlePost && singlePost.mainImage.map((item, i) => (
+              <img key={i} src={urlFor(item)} />
+                ))}
                 <div className="px-16 lg:px-48 py-12 lg:py-20 prose lg:prose-xl max-w-full">
                     <BlockContent
                     blocks={singlePost.body}
@@ -68,12 +66,13 @@ export default function SinglePost() {
                     dataset="production"
                     />
                 </div>
-                <img 
-                        src={singlePost.mainImage.asset.url}
+                
+                {/* <img 
+                        src={urlFor(singlePost.mainImage).url()}
                         alt={singlePost.title}
                         className="w-full h-full object-cover flex justify-center"
                         style={{ height: "800px" }}
-                    />
+                    /> */}
             </article>
         </main>
     )

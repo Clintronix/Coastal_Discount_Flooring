@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import sanityClient from "../Client.js"
+import {client} from "../Client.js"
+import { urlFor } from "../Client";
 
 
 export default function Post() {
         const [postData, setPost] = useState(null);
 
         useEffect(() => {
-            sanityClient
+            client
                 .fetch(`*[_type == "post"]{
                     title,
                     slug,
-                    mainImage{
-                        asset->{
-                            _id,
-                            url
-                        },
-                        alt
-                    }
+                    mainImage,
                 }`
             )
             .then((data) => setPost(data))
@@ -39,8 +34,10 @@ export default function Post() {
                             <Link to={"/post/" + post.slug.current} key={post.slug.current}>
                                 <span className="block h-64 realtive rounded shadow leading-snug bg-white border-l-8 border-green-400 -z-1" key={index}>
                                     <img 
-                                        src={post.mainImage.asset.url}
-                                        alt={post.mainImage.alt}
+                                        src={urlFor(post.mainImage && post.mainImage[0])} 
+                                        width={250} 
+                                        height={250}
+                                        alt={post.mainImage[0].alt}
                                         className="w-full h-full rounded-r object-cover"
                                     />
                                     <span className="relative flex justify-end items-end pr-4 pb-4">

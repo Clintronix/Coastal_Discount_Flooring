@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
-import SanityClient from "../Client.js"
+import {client} from "../Client.js"
 
 export default function Projects() {
     const [projectData, setProjectData] = useState(null);
 
     useEffect(() => {
-        SanityClient
+        client
         .fetch(`*[_type == "project"]{
             title,
             date,
