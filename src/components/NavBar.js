@@ -1,12 +1,12 @@
 import React from "react"
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Logo from "../images/CDF-Logo.jpeg"
 
 
 export default function NavBar() {
     return (
         <header className="p-2 bg-gray-800 opacity-75 top-0 flex justify-center">
-            <img src={Logo} className="h-16 rounded-full flex justify-start items-start"></img>
+            <Link to="/" ><img src={Logo} className="h-16 rounded-full flex justify-start items-start"></img></Link>
             <div className="container mx-auto flex justify-center">
                 <nav>
                     <NavLink 
