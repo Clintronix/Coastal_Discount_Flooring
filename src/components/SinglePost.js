@@ -38,19 +38,22 @@ export default function SinglePost() {
         <main className="min-h-screen">
             <article className="container shadow-lg mx-auto bg-gray-100 rounded-lg">
                 <div className="relative">
-                    <header className="h-full flex justify-center flex justify-center items-center">
-                        <div className="bg-white bg-opacity-75 m-1 p-12">
-                        <img 
-                            src={urlFor(singlePost.authorImage).url()}
-                            alt={singlePost.name}
-                            className="flex items-center-100 w-100 h-100 rounded-full"
-                            />
-                            <h1 className="text-3xl lg:text-6xl mb-4">
+                    <header className="h-full flex justify-center flex">
+                        <div className="w-2/3 bg-white bg-opacity-75 m-1 p-12 ">
+                        <h1 className="flex justify-center text-3xl lg:text-6xl mb-4">
                                 {singlePost.title}
                             </h1>
+                            <div className="w-fit flex justify-start items-center">
+                            <img 
+                            src={urlFor(singlePost.authorImage).height(75).url()}
+                            alt={singlePost.name}
+                            className="flex justify-center w-100 h-100 rounded-full"
+                            />
                             <p className="flex justify-center items-center pl-2 text-2xl">
                                 {singlePost.name}
                             </p>
+                            </div>
+                        
                         </div>
                     </header>
                 </div>
