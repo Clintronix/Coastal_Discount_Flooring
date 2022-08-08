@@ -45,8 +45,6 @@ export default function SinglePost() {
                             alt={singlePost.name}
                             className="flex items-center-100 w-100 h-100 rounded-full"
                             />
-                            {/* <div className="flex justify-center text-gray-800">
-                            </div> */}
                             <h1 className="text-3xl lg:text-6xl mb-4">
                                 {singlePost.title}
                             </h1>
@@ -56,14 +54,6 @@ export default function SinglePost() {
                         </div>
                     </header>
                 </div>
-                <div  className="h-800 grid md:grid-cols-2 lg:grid-cols-3 p-12 overflow-x-scroll">
-                {singlePost && singlePost.mainImage.map((item, i) => (
-                    <div className="mr-12">
-                    <img className="block rounded" key={i} src={urlFor(item).width(500)} />
-                    </div>
-                ))}
-                </div>
-                
                 <div className="px-16 lg:px-48 py-12 lg:py-20 prose lg:prose-xl max-w-full">
                     <BlockContent
                     blocks={singlePost.body}
@@ -71,13 +61,13 @@ export default function SinglePost() {
                     dataset="production"
                     />
                 </div>
-                
-                {/* <img 
-                        src={urlFor(singlePost.mainImage).url()}
-                        alt={singlePost.title}
-                        className="w-full h-full object-cover flex justify-center"
-                        style={{ height: "800px" }}
-                    /> */}
+                <div  className="h-800 grid md:grid-cols-2 lg:grid-cols-3 p-12 overflow-x-scroll">
+                {singlePost && singlePost.mainImage.map((item, i) => (
+                    <div className="mr-12">
+                    <img className="block rounded" key={i} src={urlFor(item).width(500)} />
+                    </div>
+                ))}
+                </div>
             </article>
         </main>
     )
