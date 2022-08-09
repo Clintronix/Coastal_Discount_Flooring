@@ -1,3 +1,2 @@
-My Portfolio
-Check it out!! 
+This site is created for displaying Christie's flooring products and company information
 
